@@ -1,0 +1,39 @@
+﻿<Window x:Class="Restore_Zadohin3IS_24.View.Windows.AuthorizathionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Restore_Zadohin3IS_24.View.Windows"
+        mc:Ignorable="d"
+        Title="Окно авторизации" Height="700" Width="500" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    
+    <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Введите PIN-код официанта" FontSize="20" Grid.ColumnSpan="3"/>
+        <PasswordBox Name="PincodePb" Grid.Row="1" Grid.ColumnSpan="3" Style="{StaticResource PincodePasswordBoxStyle}"/>
+        <Button Grid.Row="2" Content="1" Style="{StaticResource PincodeButtonStyle}" Click="PincodeBtn_Click"/>
+        <Button Grid.Row="2" Grid.Column="1" Content="2" Style="{StaticResource PincodeButtonStyle}" Click="PincodeBtn_Click"/>
+        <Button Grid.Row="2" Grid.Column="2" Content="3" Style="{StaticResource PincodeButtonStyle}" Click="PincodeBtn_Click"/>
+        <Button Grid.Row="3" Grid.Column="0" Content="4" Style="{StaticResource PincodeButtonStyle}" Click="PincodeBtn_Click"/>
+        <Button Grid.Row="3" Grid.Column="1" Content="5" Style="{StaticResource PincodeButtonStyle}" Click="PincodeBtn_Click"/>
+        <Button Grid.Row="3" Grid.Column="2" Content="6" Style="{StaticResource PincodeButtonStyle}" Click="PincodeBtn_Click"/>
+        <Button Grid.Row="4" Grid.Column="0" Content="7" Style="{StaticResource PincodeButtonStyle}" Click="PincodeBtn_Click"/>
+        <Button Grid.Row="4" Grid.Column="1" Content="8" Style="{StaticResource PincodeButtonStyle}" Click="PincodeBtn_Click"/>
+        <Button Grid.Row="4" Grid.Column="2" Content="9" Style="{StaticResource PincodeButtonStyle}" Click="PincodeBtn_Click"/>
+        <Button Grid.Row="5" Grid.Column="1" Content="0" Style="{StaticResource PincodeButtonStyle}" Click="PincodeBtn_Click"/>
+        <Button Grid.Row="5" Grid.Column="2" Content="X" Style="{StaticResource PincodeButtonStyle}" Name="DeleteBtn" Click="DeleteBtn_Click"/>
+        
+    </Grid>
+</Window>

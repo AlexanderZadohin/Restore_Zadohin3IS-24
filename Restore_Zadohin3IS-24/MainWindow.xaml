@@ -1,0 +1,29 @@
+﻿<Window x:Class="Restore_Zadohin3IS_24.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Restore_Zadohin3IS_24"
+        mc:Ignorable="d"
+        Title="Главное меню" Height="1080" Width="1920" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Background="#FFD4D4D4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Resources/Icons/waiter.png" Width="40"/>
+                <TextBlock x:Name="WaiterTbl" FontSize="20" VerticalAlignment="Center" Margin="10 0 0 0"/>
+            </StackPanel>
+            <Image Source="/Resources/Icons/logo.png" Grid.Column="1" Width="50"/>
+            <Button Name="GoBackBtn" HorizontalAlignment="Right" Content="Назад" Click="GoBackBtn_Click" Height="60" VerticalAlignment="Top"/>
+            <Frame x:Name="MainFrm" Grid.Row="1" Margin="0 10" NavigationUIVisibility="Hidden"/>
+        </Grid>
+    </Grid>
+</Window>
