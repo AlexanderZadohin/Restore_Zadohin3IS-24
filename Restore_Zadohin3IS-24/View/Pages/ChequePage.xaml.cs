@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -32,10 +31,17 @@ namespace Restore_Zadohin3IS_24.View.Pages
             //_enteredWaiter = enteredWaiter;
         }
 
-        //private void Page_Loaded(object sender, RoutedEventArgs e)
-        //{
-        //    TablesLB.ItemsSource = App.GetContext().Table.ToList();
-        //}
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            TablesLB.ItemsSource = App.context.Table.ToList();
+        }
+
+        private void TablesLB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            App.selectedTable = TablesLB.SelectedItem as Table;
+
+            NavigationService.Navigate(new CreateChequePage());
+        }
 
         //private void TablesLB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         //{

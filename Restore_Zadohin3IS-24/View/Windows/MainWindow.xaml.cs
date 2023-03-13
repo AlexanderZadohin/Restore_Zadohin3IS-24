@@ -22,11 +22,12 @@ namespace Restore_Zadohin3IS_24
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow(/*Waiter enteredWaiter*/)
+        public MainWindow(Waiter waiter)
         {
+            App.enteredWaiter = waiter;
             InitializeComponent();
-            //WaiterTbl.Text = enteredWaiter.Name;
-            //MainFrm.Navigate(new ChequePage(enteredWaiter));
+            WaiterTbl.Text = waiter.Name;
+            MainFrm.Navigate(new ChequePage());
         }
 
         private void GoBackBtn_Click(object sender, RoutedEventArgs e)

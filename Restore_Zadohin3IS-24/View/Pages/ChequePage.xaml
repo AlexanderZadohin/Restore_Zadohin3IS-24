@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Restore_Zadohin3IS_24.View.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="984" d:DesignWidth="1920"
-      Title="ChequePage">
+      Title="ChequePage" Loaded="Page_Loaded">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -26,7 +26,7 @@
                        FontWeight="SemiBold"
                        VerticalAlignment="Center"/>
         </Grid>
-        <ListBox Name="TablesLB" Grid.Row="1" Grid.ColumnSpan="2" BorderThickness="0" Margin="0 5"  ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+        <ListBox SelectionChanged="TablesLB_SelectionChanged" Name="TablesLB" Grid.Row="1" Grid.ColumnSpan="2" BorderThickness="0" Margin="0 5"  ScrollViewer.HorizontalScrollBarVisibility="Hidden">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Width="{Binding ElementName=TablesLB, Path=ActualWidth}"/>
@@ -53,7 +53,7 @@
                                        Text="{Binding NumberOfVisitors, StringFormat={}Кол-во посетителей:{0} чел.}"/>
                             <TextBlock Grid.Row="2"
                                        FontStyle="Italic"
-                                       Text="{Binding FreeText}"/>
+                                       Text="{Binding IsFree}"/>
                         </Grid>
                     </Border>
                 </DataTemplate>

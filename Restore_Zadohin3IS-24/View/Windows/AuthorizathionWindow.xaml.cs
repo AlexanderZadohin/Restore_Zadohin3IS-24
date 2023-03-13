@@ -37,7 +37,7 @@ namespace Restore_Zadohin3IS_24.View.Windows
 
                 if (waiter != null)
                 {
-                    MainWindow mainWindow = new MainWindow();
+                    MainWindow mainWindow = new MainWindow(waiter);
                     mainWindow.Show();
                     Close();
                 }

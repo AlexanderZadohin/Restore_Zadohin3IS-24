@@ -1,4 +1,4 @@
-﻿using Restore_Zadohin3IS_24.Model;
+﻿using Authorizathion.Model;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -7,20 +7,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Restore_Zadohin3IS_24
+namespace Authorizathion
 {
     /// <summary>
     /// Логика взаимодействия для App.xaml
     /// </summary>
     public partial class App : Application
     {
-        //Контекст данных
         public static RestoDb_ZadohinEntities context = new RestoDb_ZadohinEntities();
-
-        public static Position selectedPosition;
-
-        public static Table selectedTable;
-
-        public static Waiter enteredWaiter;
     }
 }

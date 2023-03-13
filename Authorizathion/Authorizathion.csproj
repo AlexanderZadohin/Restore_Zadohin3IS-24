@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2D893198-F5F9-46E1-8B88-97F4C673FD2F}</ProjectGuid>
+    <ProjectGuid>{B2EC2E8F-7AFE-465C-9E05-52D97EC8E32D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Restore_Zadohin3IS_24</RootNamespace>
-    <AssemblyName>Restore_Zadohin3IS-24</AssemblyName>
+    <RootNamespace>Authorizathion</RootNamespace>
+    <AssemblyName>Authorizathion</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -62,74 +62,59 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model\Category.cs">
-      <DependentUpon>RestoModel.tt</DependentUpon>
+    <Compile Include="View\Windows\Auth.xaml.cs">
+      <DependentUpon>Auth.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\Cheque.cs">
-      <DependentUpon>RestoModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\ChequePosition.cs">
-      <DependentUpon>RestoModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Position.cs">
-      <DependentUpon>RestoModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\RestoModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RestoModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\RestoModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RestoModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\RestoModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RestoModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Table.cs">
-      <DependentUpon>RestoModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Waiter.cs">
-      <DependentUpon>RestoModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="View\Pages\ChequePage.xaml.cs">
-      <DependentUpon>ChequePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Pages\CreateChequePage.xaml.cs">
-      <DependentUpon>CreateChequePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Windows\AuthorizathionWindow.xaml.cs">
-      <DependentUpon>AuthorizathionWindow.xaml</DependentUpon>
-    </Compile>
-    <Page Include="View\Pages\CreateChequePage.xaml">
+    <Page Include="View\Windows\InterWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Windows\MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="View\Windows\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
+    <Compile Include="View\Windows\InterWin.xaml.cs">
+      <DependentUpon>InterWin.xaml</DependentUpon>
     </Compile>
-    <Page Include="View\Pages\ChequePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Windows\AuthorizathionWindow.xaml">
+    <Page Include="View\Windows\Auth.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\AuthorizathionModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AuthorizathionModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AuthorizathionModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AuthorizathionModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AuthorizathionModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AuthorizathionModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Category.cs">
+      <DependentUpon>AuthorizathionModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Cheque.cs">
+      <DependentUpon>AuthorizathionModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ChequePosition.cs">
+      <DependentUpon>AuthorizathionModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Position.cs">
+      <DependentUpon>AuthorizathionModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Table.cs">
+      <DependentUpon>AuthorizathionModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Waiter.cs">
+      <DependentUpon>AuthorizathionModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -147,50 +132,40 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Model\RestoModel.edmx">
+    <EntityDeploy Include="Model\AuthorizathionModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>RestoModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>AuthorizathionModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model\RestoModel.edmx.diagram">
-      <DependentUpon>RestoModel.edmx</DependentUpon>
+    <None Include="Model\AuthorizathionModel.edmx.diagram">
+      <DependentUpon>AuthorizathionModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Resource Include="Resources\Fonts\Inter-Black.ttf" />
-    <Resource Include="Resources\Fonts\Inter-Bold.ttf" />
-    <Resource Include="Resources\Fonts\Inter-ExtraBold.ttf" />
-    <Resource Include="Resources\Fonts\Inter-ExtraLight.ttf" />
-    <Resource Include="Resources\Fonts\Inter-Light.ttf" />
-    <Resource Include="Resources\Fonts\Inter-Medium.ttf" />
-    <Resource Include="Resources\Fonts\Inter-Regular.ttf" />
-    <Resource Include="Resources\Fonts\Inter-SemiBold.ttf" />
-    <Resource Include="Resources\Fonts\Inter-Thin.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="AppDate\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Model\RestoModel.Context.tt">
+    <Content Include="Model\AuthorizathionModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>RestoModel.Context.cs</LastGenOutput>
-      <DependentUpon>RestoModel.edmx</DependentUpon>
+      <LastGenOutput>AuthorizathionModel.Context.cs</LastGenOutput>
+      <DependentUpon>AuthorizathionModel.edmx</DependentUpon>
     </Content>
-    <Content Include="Model\RestoModel.tt">
+    <Content Include="Model\AuthorizathionModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>RestoModel.edmx</DependentUpon>
-      <LastGenOutput>RestoModel.cs</LastGenOutput>
+      <DependentUpon>AuthorizathionModel.edmx</DependentUpon>
+      <LastGenOutput>AuthorizathionModel.cs</LastGenOutput>
     </Content>
-    <Resource Include="Resources\Icons\logo.png" />
-    <Resource Include="Resources\Icons\waiter.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AppDate\" />
+    <Folder Include="View\Page\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
