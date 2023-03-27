@@ -1,4 +1,5 @@
 ﻿using Restore_Zadohin3IS_24.Model;
+using Restore_Zadohin3IS_24.View.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,14 +22,17 @@ namespace Restore_Zadohin3IS_24.View.Pages
     /// </summary>
     public partial class CreateChequePage : Page
     {
-
-        decimal totalCost = 0;
+        // Итоговая цена
+        decimal totalCost;
         // Промежутчный список для фильтрации
         List<Category> categories = new List<Category>();
 
         public CreateChequePage()
         {
             InitializeComponent();
+
+            TotalCostTB.Text = GetTotalCost();
+
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -38,7 +42,6 @@ namespace Restore_Zadohin3IS_24.View.Pages
             TableTbl.DataContext = App.selectedTable;
 
             //TableTbl.Text = App.selectedTable.Title;
-            
 
             DateTbl.Text = "Открыт: " + DateTime.Now.ToString();
 
@@ -100,14 +103,50 @@ namespace Restore_Zadohin3IS_24.View.Pages
 
         private string GetTotalCost()
         {
-
             totalCost = 0;
             foreach (Position position in PositionsLv.Items)
             {
-              totalCost += position.Cost;
+                totalCost += position.Cost;
             }
 
             return $"К оплате {totalCost} ₽";
+        }
+
+        private void CreateCheacueBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //В какую таблицу добавить чек
+            //Свойства таблицы гужно заполнить
+            Cheque newCheque = new Cheque
+            //инициализаторы
+            {
+                Title = "Cheque Title",
+                TotalCost = totalCost,
+                IsClosed = false,
+                OpeningDate = DateTime.Now,
+                WaiterId = App.enteredWaiter.WaiterId,
+                TableId = App.selectedTable.TableId,
+            };
+            //Добавить объект
+            App.context.Cheque.Add(newCheque);
+            //Сохранить 
+            App.context.SaveChanges();
+
+            MessageBox.Show("Чек успешно добавлен!");
+        }
+
+        private void AddPositionBtn_Click(object sender, RoutedEventArgs e)
+        {
+            AddPositionWindow addPosition = new AddPositionWindow();
+            
+            if (addPosition.ShowDialog() == true)
+            {
+                PositionLsb.ItemsSource = App.context.Position.ToList();
+            }
+        }
+
+        private void NewPositionsLV_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

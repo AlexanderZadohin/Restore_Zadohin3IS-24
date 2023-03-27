@@ -78,28 +78,51 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="50" />
                 <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height=".5*" />
+                <RowDefinition Height="50" />
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="50" />
+                <RowDefinition Height="80" />
                 <RowDefinition Height="80" />
             </Grid.RowDefinitions>
 
             <TextBlock Name="TableTbl" FontSize="30" FontWeight="SemiBold" Text="{Binding Title}"/>
             <TextBlock Grid.Row="1" Name="DateTbl" FontSize="20" FontWeight="SemiBold"/>
-            <ListView Grid.Row="2" Name="PositionsLv" FontSize="15" Foreground="Black" SelectionChanged="PositionsLv_SelectionChanged">
+            <TextBlock Grid.Row="2" FontSize="20" VerticalAlignment="Center" Text="Ранее в заказе:" FontWeight="SemiBold"/>
+            <ListView Grid.Row="3" Name="PositionsLv" FontSize="15" Foreground="Black" SelectionChanged="PositionsLv_SelectionChanged">
                 <ListView.View>
                     <GridView>
                         <GridView.Columns>
                             <GridViewColumn Header="Название"
+                                            Width="200"
                                             DisplayMemberBinding="{Binding Title}"/>
-                            <GridViewColumn Header="Итого"
-                                            DisplayMemberBinding="{Binding Cost, StringFormat={}{0} р}"/>
+                            <GridViewColumn Header="Цена"
+                                            Width="180"
+                                            DisplayMemberBinding="{Binding Cost, StringFormat={}{0} ₽}"/>
                         </GridView.Columns>
                     </GridView>
                 </ListView.View>
             </ListView>
-            <TextBlock Grid.Row="3" Name="TotalCostTB" />
-            <Button Grid.Row="4" Content="Создать чек" 
+            <TextBlock Grid.Row="4" FontSize="20" Text="Новые позиции:" VerticalAlignment="Center" FontWeight="SemiBold"/>
+            <ListView Name="NewPositionsLV"
+                      Grid.Row="5"
+                      FontSize="15"
+                      Foreground="Black"
+                      SelectionChanged="NewPositionsLV_SelectionChanged">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Название"
+                                        DisplayMemberBinding="{Binding Title}"/>
+                        <GridViewColumn Header="Цена"
+                                        DisplayMemberBinding="{Binding Cost, StringFormat={}{} ₽}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <TextBlock Name="TotalCostTB" FontSize="20" FontWeight="SemiBold" VerticalAlignment="Center" Grid.Row="6"/>
+            <Button Name="CreateCheacueBtn" Click="CreateCheacueBtn_Click"  Grid.Row="7" Content="Создать чек" 
                     Style="{StaticResource ButtonStyle}"/>
+            <Button Name="AddPositionBtn" Grid.Row="8" Click="AddPositionBtn_Click" Content="Добавить позицию" Style="{StaticResource ButtonStyle}"/>
         </Grid>
     </Grid>
 </Page>
