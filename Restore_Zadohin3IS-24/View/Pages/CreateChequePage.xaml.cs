@@ -112,6 +112,14 @@ namespace Restore_Zadohin3IS_24.View.Pages
             return $"К оплате {totalCost} ₽";
         }
 
+        private string GenerationChequeTittle()
+        {
+            DateTime dateDateTime = DateTime.Now;
+            return $"Чек №{dateDateTime.Day}{dateDateTime.Month}{dateDateTime.Year}-{dateDateTime.Hour}{dateDateTime.Minute}";
+            
+
+        }
+
         private void CreateCheacueBtn_Click(object sender, RoutedEventArgs e)
         {
             //В какую таблицу добавить чек
@@ -119,7 +127,7 @@ namespace Restore_Zadohin3IS_24.View.Pages
             Cheque newCheque = new Cheque
             //инициализаторы
             {
-                Title = "Cheque Title",
+                Title = GenerationChequeTittle(),
                 TotalCost = totalCost,
                 IsClosed = false,
                 OpeningDate = DateTime.Now,
@@ -148,5 +156,6 @@ namespace Restore_Zadohin3IS_24.View.Pages
         {
 
         }
+
     }
 }

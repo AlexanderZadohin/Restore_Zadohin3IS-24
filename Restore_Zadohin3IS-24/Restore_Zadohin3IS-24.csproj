@@ -122,6 +122,9 @@
     <Compile Include="View\Windows\AuthorizathionWindow.xaml.cs">
       <DependentUpon>AuthorizathionWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Windows\PaymentWindow.xaml.cs">
+      <DependentUpon>PaymentWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="View\Pages\CreateChequePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -147,6 +150,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\AuthorizathionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\PaymentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
