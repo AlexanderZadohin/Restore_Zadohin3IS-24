@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -116,8 +115,6 @@ namespace Restore_Zadohin3IS_24.View.Pages
         {
             DateTime dateDateTime = DateTime.Now;
             return $"Чек №{dateDateTime.Day}{dateDateTime.Month}{dateDateTime.Year}-{dateDateTime.Hour}{dateDateTime.Minute}";
-            
-
         }
 
         private void CreateCheacueBtn_Click(object sender, RoutedEventArgs e)
@@ -134,11 +131,38 @@ namespace Restore_Zadohin3IS_24.View.Pages
                 WaiterId = App.enteredWaiter.WaiterId,
                 TableId = App.selectedTable.TableId,
             };
-            //Добавить объект
-            App.context.Cheque.Add(newCheque);
-            //Сохранить 
-            App.context.SaveChanges();
 
+            //Добавить объект
+            if (App.selectedTable.IsFree)
+            {
+                foreach (Table table in App.context.Table.ToList())
+                {
+                    if (table.Equals(App.selectedTable))
+                    {
+                        table.IsFree = false;
+                    }
+                }
+
+                App.context.Cheque.Add(newCheque);
+                //Сохранить 
+                App.context.SaveChanges();
+            }
+            else
+            {
+                MessageBox.Show("Этот стол уже занят! Чек создан");
+            }
+
+            foreach(Position position in PositionsLv.Items) 
+            {
+                ChequePosition chequePosition = new ChequePosition
+                {
+                    ChequeId = newCheque.ChequeId,
+                    PositionId = position.PositionId,
+                };
+                App.context.ChequePosition.Add(chequePosition);
+                App.context.SaveChanges();
+
+            }
             MessageBox.Show("Чек успешно добавлен!");
         }
 

@@ -24,5 +24,7 @@ namespace Restore_Zadohin3IS_24
         public static Waiter enteredWaiter;
 
         public static Cheque openCheques;
+
+        public static Cheque selectedCheque;
     }
 }

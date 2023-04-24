@@ -27,7 +27,7 @@ namespace Restore_Zadohin3IS_24
             App.enteredWaiter = waiter;
             InitializeComponent();
             WaiterTbl.Text = waiter.Name;
-            MainFrm.Navigate(new ChequePage());
+            MainFrm.Navigate(new ChequePage(App.enteredWaiter));
         }
 
         private void GoBackBtn_Click(object sender, RoutedEventArgs e)

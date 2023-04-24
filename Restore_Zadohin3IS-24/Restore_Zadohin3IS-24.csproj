@@ -116,6 +116,9 @@
     <Compile Include="View\Pages\CreateChequePage.xaml.cs">
       <DependentUpon>CreateChequePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Pages\EditChequePage.xaml.cs">
+      <DependentUpon>EditChequePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\AddPositionWindow.xaml.cs">
       <DependentUpon>AddPositionWindow.xaml</DependentUpon>
     </Compile>
@@ -126,6 +129,10 @@
       <DependentUpon>PaymentWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="View\Pages\CreateChequePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\EditChequePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

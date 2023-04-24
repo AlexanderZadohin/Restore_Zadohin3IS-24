@@ -17,10 +17,12 @@
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
+        <TextBlock HorizontalAlignment="Left" Name="ToPayTbl" VerticalAlignment="Center" FontSize="35"/>
+        <TextBlock Name="ChangeTbl" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="35"/>
         <TextBlock Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="35" Text="Наличными"/>
         <TextBlock Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="35" Text="Банковской картой" />
-        <TextBox />
-        <TextBox />
-        <Button Grid.Row="3" Grid.ColumnSpan="2" Content="Оплатить" Style="{StaticResource ButtonStyle}"/>
+        <TextBox Name="CashTb" TextChanged="CashTb_TextChanged"  Grid.Row="1" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
+        <TextBox Name="BankCard" GotFocus="BankCard_GotFocus" LostFocus="BankCard_LostFocus" Grid.Row="2" Grid.Column="1" Style="{StaticResource TextBoxStyle}"/>
+        <Button Grid.Row="3" Grid.ColumnSpan="2" Name="PayBtn" Click="PayBtn_Click" Content="Оплатить" Style="{StaticResource ButtonStyle}"/>
     </Grid>
 </Window>

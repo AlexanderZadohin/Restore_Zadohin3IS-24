@@ -20,15 +20,15 @@ namespace Restore_Zadohin3IS_24.View.Pages
     /// </summary>
     public partial class ChequePage : Page
     {
-        //private Table _selectedTable;
-        //private Waiter _enteredWaiter;
-        //private ChequePage _selectedCheque;
+        private Table _selectedTable;
+        private Waiter _enteredWaiter;
+        private Cheque _selectedCheque;
 
-        public ChequePage(/*Waiter enteredWaiter*/)
+        public ChequePage(Waiter enteredWaiter)
         {
             InitializeComponent();
 
-            //_enteredWaiter = enteredWaiter;
+            _enteredWaiter = enteredWaiter;
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -46,21 +46,18 @@ namespace Restore_Zadohin3IS_24.View.Pages
 
         private void OpenChequesLB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            App.selectedCheque = OpenChequesLB.SelectedItem as Cheque;
 
+            if (App.selectedCheque.Waiter.WaiterId == _enteredWaiter.WaiterId)
+            {
+                NavigationService.Navigate(new EditChequePage());
+            }
+            else 
+            {
+                MessageBox.Show("Вы можете редактировать только свои чеки!");
+            }
         }
 
-        //private void TablesLB_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-        //    _selectedTable = TablesLB.SelectedItem as Table;
 
-        //    if (_selectedTable.IsFree)
-        //    {
-        //        NavigationService.Navigate(new CreateChequePage(_selectedTable, _enteredWaiter));
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Стол занят. Используйте меню\"Открытые чеки\" для его изминения. ");
-        //    }
-        //}
     }
 }
