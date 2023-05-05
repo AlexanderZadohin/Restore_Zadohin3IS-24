@@ -21,10 +21,15 @@ namespace Restore_Zadohin3IS_24
 
         public static Table selectedTable;
 
-        public static Waiter enteredWaiter;
+        public static Employee selectedWaiter;
+
+        public static Employee enteredEmployee;
 
         public static Cheque openCheques;
 
         public static Cheque selectedCheque;
+        #region ClassAdmin
+        
+        #endregion
     }
 }

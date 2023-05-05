@@ -12,23 +12,12 @@ namespace Restore_Zadohin3IS_24.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Cheque
+    public partial class sysdiagrams
     {
-        public Cheque()
-        {
-            this.ChequePosition = new HashSet<ChequePosition>();
-        }
-    
-        public int ChequeId { get; set; }
-        public string Title { get; set; }
-        public decimal TotalCost { get; set; }
-        public bool IsClosed { get; set; }
-        public System.DateTime OpeningDate { get; set; }
-        public int WaiterId { get; set; }
-        public int TableId { get; set; }
-    
-        public virtual Table Table { get; set; }
-        public virtual Employee Employee { get; set; }
-        public virtual ICollection<ChequePosition> ChequePosition { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

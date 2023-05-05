@@ -86,6 +86,9 @@
     <Compile Include="Model\ChequePosition.cs">
       <DependentUpon>RestoModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Employee.cs">
+      <DependentUpon>RestoModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Position.cs">
       <DependentUpon>RestoModel.tt</DependentUpon>
     </Compile>
@@ -104,11 +107,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RestoModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\Role.cs">
+      <DependentUpon>RestoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\sysdiagrams.cs">
+      <DependentUpon>RestoModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Table.cs">
       <DependentUpon>RestoModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Waiter.cs">
-      <DependentUpon>RestoModel.tt</DependentUpon>
+    <Compile Include="View\Pages\AdministratorPage.xaml.cs">
+      <DependentUpon>AdministratorPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Pages\ChequePage.xaml.cs">
       <DependentUpon>ChequePage.xaml</DependentUpon>
@@ -122,12 +131,19 @@
     <Compile Include="View\Windows\AddPositionWindow.xaml.cs">
       <DependentUpon>AddPositionWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Windows\AdministratorWindow.xaml.cs">
+      <DependentUpon>AdministratorWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\AuthorizathionWindow.xaml.cs">
       <DependentUpon>AuthorizathionWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\PaymentWindow.xaml.cs">
       <DependentUpon>PaymentWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\Pages\AdministratorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Pages\CreateChequePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -137,6 +153,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\AddPositionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\AdministratorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -222,6 +242,7 @@
       <DependentUpon>RestoModel.edmx</DependentUpon>
       <LastGenOutput>RestoModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\Icons\Administrator.png" />
     <Resource Include="Resources\Icons\logo.png" />
     <Resource Include="Resources\Icons\waiter.png" />
   </ItemGroup>

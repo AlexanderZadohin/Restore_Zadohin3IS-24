@@ -53,7 +53,7 @@
                                        Text="{Binding NumberOfVisitors, StringFormat={}Кол-во посетителей:{0} чел.}"/>
                             <TextBlock Grid.Row="2"
                                        FontStyle="Italic"
-                                       Text="{Binding IsFree}"/>
+                                       Text="{Binding FreeText}"/>
                         </Grid>
                     </Border>
                 </DataTemplate>

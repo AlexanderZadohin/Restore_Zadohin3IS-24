@@ -12,9 +12,9 @@ namespace Restore_Zadohin3IS_24.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Waiter
+    public partial class Employee
     {
-        public Waiter()
+        public Employee()
         {
             this.Cheque = new HashSet<Cheque>();
         }
@@ -22,7 +22,9 @@ namespace Restore_Zadohin3IS_24.Model
         public int WaiterId { get; set; }
         public string Name { get; set; }
         public string Pincode { get; set; }
+        public Nullable<int> RoleId { get; set; }
     
         public virtual ICollection<Cheque> Cheque { get; set; }
+        public virtual Role Role { get; set; }
     }
 }

@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static Restore_Zadohin3IS_24.App;
 
 namespace Restore_Zadohin3IS_24.View.Windows
 {
@@ -24,6 +25,7 @@ namespace Restore_Zadohin3IS_24.View.Windows
         public AuthorizathionWindow()
         {
             InitializeComponent();
+
         }
 
         private void PincodeBtn_Click(object sender, RoutedEventArgs e)
@@ -33,15 +35,24 @@ namespace Restore_Zadohin3IS_24.View.Windows
 
             if (PincodePb.Password.Length == 4)
             {
-                Waiter waiter = App.context.Waiter.FirstOrDefault(w => w.Pincode == PincodePb.Password);
-
-                if (waiter != null)
+                Employee employee = App.context.Employee.FirstOrDefault(w => w.Pincode == PincodePb.Password);
+                if (employee != null)
                 {
-                    MainWindow mainWindow = new MainWindow(waiter);
-                    mainWindow.Show();
-                    Close();
+                    if (employee.RoleId == 1) 
+                    {
+                        MainWindow mainWindow = new MainWindow(employee);
+                        mainWindow.Show();
+                        Close();
+                    }
+                    else if(employee.RoleId == 2)
+                    {
+                        AdministratorWindow administrator = new AdministratorWindow(employee);
+                        administrator.Show();
+                        Close();
+                    }
+
                 }
-                else
+                else 
                 {
                     MessageBox.Show("Неправильный PIN-code!");
                     PincodePb.Clear();

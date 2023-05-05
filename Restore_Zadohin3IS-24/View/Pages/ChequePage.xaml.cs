@@ -21,10 +21,10 @@ namespace Restore_Zadohin3IS_24.View.Pages
     public partial class ChequePage : Page
     {
         private Table _selectedTable;
-        private Waiter _enteredWaiter;
+        private Employee _enteredWaiter;
         private Cheque _selectedCheque;
 
-        public ChequePage(Waiter enteredWaiter)
+        public ChequePage(Employee enteredWaiter)
         {
             InitializeComponent();
 
@@ -48,7 +48,7 @@ namespace Restore_Zadohin3IS_24.View.Pages
         {
             App.selectedCheque = OpenChequesLB.SelectedItem as Cheque;
 
-            if (App.selectedCheque.Waiter.WaiterId == _enteredWaiter.WaiterId)
+            if (App.selectedCheque.Employee.WaiterId == _enteredWaiter.WaiterId)
             {
                 NavigationService.Navigate(new EditChequePage());
             }

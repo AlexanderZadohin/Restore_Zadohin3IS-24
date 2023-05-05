@@ -12,33 +12,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using static Restore_Zadohin3IS_24.App;
 
-namespace Restore_Zadohin3IS_24
+namespace Restore_Zadohin3IS_24.View.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для AdministratorWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AdministratorWindow : Window
     {
-        public MainWindow(Employee employee)
+        public AdministratorWindow(Employee employee)
         {
             App.enteredEmployee = employee;
             InitializeComponent();
             if (employee == App.enteredEmployee)
             {
                 WaiterTbl.Text = employee.Name;
-                MainFrm.Navigate(new ChequePage(App.enteredEmployee));
-            }
-        }
-
-        private void GoBackBtn_Click(object sender, RoutedEventArgs e)
-        {
-            if (MainFrm.CanGoBack)
-            {
-                MainFrm.GoBack();
+                AdminFrm.Navigate(new AdministratorPage(App.enteredEmployee));
             }
         }
     }

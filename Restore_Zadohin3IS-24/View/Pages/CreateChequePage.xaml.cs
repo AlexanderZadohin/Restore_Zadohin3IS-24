@@ -128,7 +128,7 @@ namespace Restore_Zadohin3IS_24.View.Pages
                 TotalCost = totalCost,
                 IsClosed = false,
                 OpeningDate = DateTime.Now,
-                WaiterId = App.enteredWaiter.WaiterId,
+                WaiterId = App.enteredEmployee.WaiterId,
                 TableId = App.selectedTable.TableId,
             };
 
@@ -164,6 +164,7 @@ namespace Restore_Zadohin3IS_24.View.Pages
 
             }
             MessageBox.Show("Чек успешно добавлен!");
+            
         }
 
         private void AddPositionBtn_Click(object sender, RoutedEventArgs e)
@@ -174,11 +175,6 @@ namespace Restore_Zadohin3IS_24.View.Pages
             {
                 PositionLsb.ItemsSource = App.context.Position.ToList();
             }
-        }
-
-        private void NewPositionsLV_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
 
     }

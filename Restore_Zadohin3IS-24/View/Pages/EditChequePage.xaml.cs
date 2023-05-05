@@ -56,6 +56,7 @@ namespace Restore_Zadohin3IS_24.View.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            PositionLsb.ItemsSource = App.context.Position.ToList();
         }
         private string GetTotalCost(ListView positinsLv)
         {
@@ -123,7 +124,7 @@ namespace Restore_Zadohin3IS_24.View.Pages
 
             if (paymentWindow.DialogResult == true) 
             {
-                NavigationService.Navigate(new ChequePage(App.selectedCheque.Waiter));
+                NavigationService.Navigate(new ChequePage(App.selectedCheque.Employee));
             }
         }
 
@@ -154,6 +155,8 @@ namespace Restore_Zadohin3IS_24.View.Pages
                 App.context.SaveChanges();
             }
             MessageBox.Show("Новые позиции добавлены в чек!");
+
+            NavigationService.Navigate(new ChequePage(App.selectedCheque.Employee));
         }
     }
 }

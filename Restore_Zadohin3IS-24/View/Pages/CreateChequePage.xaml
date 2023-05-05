@@ -90,7 +90,7 @@
             <TextBlock Name="TableTbl" FontSize="30" FontWeight="SemiBold" Text="{Binding Title}"/>
             <TextBlock Grid.Row="1" Name="DateTbl" FontSize="20" FontWeight="SemiBold"/>
             <TextBlock Grid.Row="2" FontSize="20" VerticalAlignment="Center" Text="Ранее в заказе:" FontWeight="SemiBold"/>
-            <ListView Grid.Row="3" Name="PositionsLv" FontSize="15" Foreground="Black" SelectionChanged="PositionsLv_SelectionChanged">
+            <ListView Grid.Row="3" Grid.RowSpan="3" Name="PositionsLv" FontSize="15" Foreground="Black" SelectionChanged="PositionsLv_SelectionChanged">
                 <ListView.View>
                     <GridView>
                         <GridView.Columns>
@@ -101,23 +101,6 @@
                                             Width="180"
                                             DisplayMemberBinding="{Binding Cost, StringFormat={}{0} ₽}"/>
                         </GridView.Columns>
-                    </GridView>
-                </ListView.View>
-            </ListView>
-            <TextBlock Grid.Row="4" FontSize="20" Text="Новые позиции:" VerticalAlignment="Center" FontWeight="SemiBold"/>
-            <ListView Name="NewPositionsLV"
-                      Grid.Row="5"
-                      FontSize="15"
-                      Foreground="Black"
-                      SelectionChanged="NewPositionsLV_SelectionChanged">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="Название"
-                                        Width="200"
-                                        DisplayMemberBinding="{Binding Title}"/>
-                        <GridViewColumn Header="Цена"
-                                        Width="180"
-                                        DisplayMemberBinding="{Binding Cost, StringFormat={}{} ₽}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
