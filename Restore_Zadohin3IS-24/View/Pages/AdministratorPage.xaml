@@ -149,6 +149,20 @@
         </ListBox>
         <Grid Grid.Column="2" Grid.Row="1">
             <StackPanel Background="White">
+                <Button Name="AddTableBtn" Style="{StaticResource AddEditDeleteButton}" Content="Добавить"/>
+                <Button Style="{StaticResource AddEditDeleteButton}" Content="Удалить"/>
+                <Button Style="{StaticResource AddEditDeleteButton}" Content="Редактиовать"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Column="2" Grid.Row="3">
+            <StackPanel Background="White">
+                <Button Style="{StaticResource AddEditDeleteButton}" Content="Добавить"/>
+                <Button Style="{StaticResource AddEditDeleteButton}" Content="Удалить"/>
+                <Button Style="{StaticResource AddEditDeleteButton}" Content="Редактиовать"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Column="2" Grid.Row="5">
+            <StackPanel Background="White">
                 <Button Style="{StaticResource AddEditDeleteButton}" Content="Добавить"/>
                 <Button Style="{StaticResource AddEditDeleteButton}" Content="Удалить"/>
                 <Button Style="{StaticResource AddEditDeleteButton}" Content="Редактиовать"/>
