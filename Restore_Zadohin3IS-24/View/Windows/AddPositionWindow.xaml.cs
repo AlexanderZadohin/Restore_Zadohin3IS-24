@@ -22,14 +22,33 @@ namespace Restore_Zadohin3IS_24.View.Windows
     /// </summary>
     public partial class AddPositionWindow : Window
     {
+        bool isEdit = false;
         List<Category> categories = new List<Category>();
         OpenFileDialog openFileDialog = new OpenFileDialog();
         public AddPositionWindow()
         {
             InitializeComponent();
 
+            isEdit = false;
+
             SelectCatecoryCmb.ItemsSource = categories;
             categories = App.context.Category.ToList();
+
+            AddPositionBtn.Content = "Добавить";
+        }
+
+        public AddPositionWindow(Position selectedPosition)
+        {
+            InitializeComponent();
+
+            DataContext = selectedPosition;
+
+            isEdit = true;
+
+            SelectCatecoryCmb.ItemsSource = categories;
+            categories = App.context.Category.ToList();
+
+            AddPositionBtn.Content = "Сохранить изменения";
         }
 
         private void SelectCatecoryCmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -46,19 +65,33 @@ namespace Restore_Zadohin3IS_24.View.Windows
 
         private void AddPositionBtn_Click(object sender, RoutedEventArgs e)
         {
-            Position newPosition = new Position
+            if (isEdit == true)
             {
-                Title = NamePositionTB.Text,
-                Cost = decimal.Parse(CostPositionTB.Text),
-                CategoryId = SelectCatecoryCmb.SelectedIndex + 1,
-                Photo = File.ReadAllBytes(openFileDialog.FileName)
-            };
-            App.context.Position.Add(newPosition);
-            App.context.SaveChanges();
-            MessageBox.Show("Позиция добавлена!","Потверждение добавления");
-            DialogResult = true;
-        }
+                AddPositionBtn.Content = "Изменить";
 
+                App.context.SaveChanges();
+
+                MessageBox.Show("Позиция успешно изменена!");
+
+                DialogResult = true;
+            }
+            else
+            {
+
+                AddPositionBtn.Content = "Добавить";
+                Position newPosition = new Position
+                {
+                    Title = NamePositionTB.Text,
+                    Cost = decimal.Parse(CostPositionTB.Text),
+                    CategoryId = SelectCatecoryCmb.SelectedIndex + 1,
+                    Photo = File.ReadAllBytes(openFileDialog.FileName)
+                };
+                App.context.Position.Add(newPosition);
+                App.context.SaveChanges();
+                MessageBox.Show("Позиция добавлена!", "Потверждение добавления");
+                DialogResult = true;
+            }
+        }
         private void LoadPhotoBtn_Click(object sender, RoutedEventArgs e)
         {
             openFileDialog.ShowDialog();

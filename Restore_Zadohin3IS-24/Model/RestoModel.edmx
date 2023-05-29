@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище RestoDb_ZadohinModel" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище RestoDb_ZadohinModel" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="CategoryId" />
@@ -40,6 +40,16 @@
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Pincode" Type="varchar" MaxLength="4" Nullable="false" />
           <Property Name="RoleId" Type="int" />
+          <Property Name="AccoutId" Type="int" />
+        </EntityType>
+        <EntityType Name="Guest">
+          <Key>
+            <PropertyRef Name="GuestId" />
+          </Key>
+          <Property Name="GuestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FIO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Discont" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="TelephoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Position">
           <Key>
@@ -57,6 +67,16 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Post" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ShiftAccounting">
+          <Key>
+            <PropertyRef Name="AccoutId" />
+          </Key>
+          <Property Name="AccoutId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeId" Type="int" Nullable="false" />
+          <Property Name="Revenue" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -138,6 +158,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Employee_ShiftAccounting">
+          <End Role="ShiftAccounting" Type="Self.ShiftAccounting" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShiftAccounting">
+              <PropertyRef Name="AccoutId" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="AccoutId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Position_Category">
           <End Role="Category" Type="Self.Category" Multiplicity="1" />
           <End Role="Position" Type="Self.Position" Multiplicity="*" />
@@ -155,8 +187,10 @@
           <EntitySet Name="Cheque" EntityType="Self.Cheque" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChequePosition" EntityType="Self.ChequePosition" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Guest" EntityType="Self.Guest" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShiftAccounting" EntityType="Self.ShiftAccounting" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Cheque_Table" Association="Self.FK_Cheque_Table">
@@ -179,71 +213,42 @@
             <End Role="Role" EntitySet="Role" />
             <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
+          <AssociationSet Name="FK_Employee_ShiftAccounting" Association="Self.FK_Employee_ShiftAccounting">
+            <End Role="ShiftAccounting" EntitySet="ShiftAccounting" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
           <AssociationSet Name="FK_Position_Category" Association="Self.FK_Position_Category">
             <End Role="Category" EntitySet="Category" />
             <End Role="Position" EntitySet="Position" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="RestoDb_ZadohinModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="RestoDb_ZadohinEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Category" EntityType="RestoDb_ZadohinModel.Category" />
-          <EntitySet Name="Cheque" EntityType="RestoDb_ZadohinModel.Cheque" />
-          <EntitySet Name="ChequePosition" EntityType="RestoDb_ZadohinModel.ChequePosition" />
-          <EntitySet Name="Employee" EntityType="RestoDb_ZadohinModel.Employee" />
-          <EntitySet Name="Position" EntityType="RestoDb_ZadohinModel.Position" />
-          <EntitySet Name="Role" EntityType="RestoDb_ZadohinModel.Role" />
-          <EntitySet Name="sysdiagrams" EntityType="RestoDb_ZadohinModel.sysdiagrams" />
-          <EntitySet Name="Table" EntityType="RestoDb_ZadohinModel.Table" />
-          <AssociationSet Name="FK_Position_Category" Association="RestoDb_ZadohinModel.FK_Position_Category">
-            <End Role="Category" EntitySet="Category" />
-            <End Role="Position" EntitySet="Position" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Cheque_Table" Association="RestoDb_ZadohinModel.FK_Cheque_Table">
-            <End Role="Table" EntitySet="Table" />
-            <End Role="Cheque" EntitySet="Cheque" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Cheque_Waiter" Association="RestoDb_ZadohinModel.FK_Cheque_Waiter">
-            <End Role="Employee" EntitySet="Employee" />
-            <End Role="Cheque" EntitySet="Cheque" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ChequePosition_Cheque" Association="RestoDb_ZadohinModel.FK_ChequePosition_Cheque">
-            <End Role="Cheque" EntitySet="Cheque" />
-            <End Role="ChequePosition" EntitySet="ChequePosition" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ChequePosition_Position" Association="RestoDb_ZadohinModel.FK_ChequePosition_Position">
-            <End Role="Position" EntitySet="Position" />
-            <End Role="ChequePosition" EntitySet="ChequePosition" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Employee_Role" Association="RestoDb_ZadohinModel.FK_Employee_Role">
-            <End Role="Role" EntitySet="Role" />
-            <End Role="Employee" EntitySet="Employee" />
-          </AssociationSet>
-        </EntityContainer>
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="CategoryId" />
           </Key>
           <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Position" Relationship="RestoDb_ZadohinModel.FK_Position_Category" FromRole="Category" ToRole="Position" />
+          <Property Name="Title" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Position" Relationship="Self.FK_Position_Category" FromRole="Category" ToRole="Position" />
         </EntityType>
         <EntityType Name="Cheque">
           <Key>
             <PropertyRef Name="ChequeId" />
           </Key>
           <Property Name="ChequeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="TotalCost" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="Title" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TotalCost" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
           <Property Name="IsClosed" Type="Boolean" Nullable="false" />
           <Property Name="OpeningDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="WaiterId" Type="Int32" Nullable="false" />
           <Property Name="TableId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Table" Relationship="RestoDb_ZadohinModel.FK_Cheque_Table" FromRole="Cheque" ToRole="Table" />
-          <NavigationProperty Name="Employee" Relationship="RestoDb_ZadohinModel.FK_Cheque_Waiter" FromRole="Cheque" ToRole="Employee" />
-          <NavigationProperty Name="ChequePosition" Relationship="RestoDb_ZadohinModel.FK_ChequePosition_Cheque" FromRole="Cheque" ToRole="ChequePosition" />
+          <NavigationProperty Name="Table" Relationship="Self.FK_Cheque_Table" FromRole="Cheque" ToRole="Table" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Cheque_Waiter" FromRole="Cheque" ToRole="Employee" />
+          <NavigationProperty Name="ChequePosition" Relationship="Self.FK_ChequePosition_Cheque" FromRole="Cheque" ToRole="ChequePosition" />
         </EntityType>
         <EntityType Name="ChequePosition">
           <Key>
@@ -252,45 +257,67 @@
           <Property Name="ChequePositionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ChequeId" Type="Int32" Nullable="false" />
           <Property Name="PositionId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Cheque" Relationship="RestoDb_ZadohinModel.FK_ChequePosition_Cheque" FromRole="ChequePosition" ToRole="Cheque" />
-          <NavigationProperty Name="Position" Relationship="RestoDb_ZadohinModel.FK_ChequePosition_Position" FromRole="ChequePosition" ToRole="Position" />
+          <NavigationProperty Name="Cheque" Relationship="Self.FK_ChequePosition_Cheque" FromRole="ChequePosition" ToRole="Cheque" />
+          <NavigationProperty Name="Position" Relationship="Self.FK_ChequePosition_Position" FromRole="ChequePosition" ToRole="Position" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
             <PropertyRef Name="WaiterId" />
           </Key>
           <Property Name="WaiterId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Pincode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Pincode" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="RoleId" Type="Int32" />
-          <NavigationProperty Name="Cheque" Relationship="RestoDb_ZadohinModel.FK_Cheque_Waiter" FromRole="Employee" ToRole="Cheque" />
-          <NavigationProperty Name="Role" Relationship="RestoDb_ZadohinModel.FK_Employee_Role" FromRole="Employee" ToRole="Role" />
+          <Property Name="AccoutId" Type="Int32" />
+          <NavigationProperty Name="Cheque" Relationship="Self.FK_Cheque_Waiter" FromRole="Employee" ToRole="Cheque" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_Employee_Role" FromRole="Employee" ToRole="Role" />
+          <NavigationProperty Name="ShiftAccounting" Relationship="Self.FK_Employee_ShiftAccounting" FromRole="Employee" ToRole="ShiftAccounting" />
+        </EntityType>
+        <EntityType Name="Guest">
+          <Key>
+            <PropertyRef Name="GuestId" />
+          </Key>
+          <Property Name="GuestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FIO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Discont" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="TelephoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="Position">
           <Key>
             <PropertyRef Name="PositionId" />
           </Key>
           <Property Name="PositionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="Cost" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+          <Property Name="Title" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cost" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
           <Property Name="CategoryId" Type="Int32" Nullable="false" />
           <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="Category" Relationship="RestoDb_ZadohinModel.FK_Position_Category" FromRole="Position" ToRole="Category" />
-          <NavigationProperty Name="ChequePosition" Relationship="RestoDb_ZadohinModel.FK_ChequePosition_Position" FromRole="Position" ToRole="ChequePosition" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Position_Category" FromRole="Position" ToRole="Category" />
+          <NavigationProperty Name="ChequePosition" Relationship="Self.FK_ChequePosition_Position" FromRole="Position" ToRole="ChequePosition" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Post" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Employee" Relationship="RestoDb_ZadohinModel.FK_Employee_Role" FromRole="Role" ToRole="Employee" />
+          <Property Name="Post" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Role" FromRole="Role" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="ShiftAccounting">
+          <Key>
+            <PropertyRef Name="AccoutId" />
+          </Key>
+          <Property Name="AccoutId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+          <Property Name="Revenue" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_ShiftAccounting" FromRole="ShiftAccounting" ToRole="Employee" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="principal_id" Type="Int32" Nullable="false" />
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
@@ -301,15 +328,15 @@
             <PropertyRef Name="TableId" />
           </Key>
           <Property Name="TableId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="NumberOfVisitors" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="IsFree" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Cheque" Relationship="RestoDb_ZadohinModel.FK_Cheque_Table" FromRole="Table" ToRole="Cheque" />
+          <NavigationProperty Name="Cheque" Relationship="Self.FK_Cheque_Table" FromRole="Table" ToRole="Cheque" />
         </EntityType>
         <Association Name="FK_Position_Category">
-          <End Type="RestoDb_ZadohinModel.Category" Role="Category" Multiplicity="1" />
-          <End Type="RestoDb_ZadohinModel.Position" Role="Position" Multiplicity="*" />
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Position" Type="Self.Position" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Category">
               <PropertyRef Name="CategoryId" />
@@ -320,8 +347,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Cheque_Table">
-          <End Type="RestoDb_ZadohinModel.Table" Role="Table" Multiplicity="1" />
-          <End Type="RestoDb_ZadohinModel.Cheque" Role="Cheque" Multiplicity="*" />
+          <End Role="Table" Type="Self.Table" Multiplicity="1" />
+          <End Role="Cheque" Type="Self.Cheque" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Table">
               <PropertyRef Name="TableId" />
@@ -332,8 +359,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Cheque_Waiter">
-          <End Type="RestoDb_ZadohinModel.Employee" Role="Employee" Multiplicity="1" />
-          <End Type="RestoDb_ZadohinModel.Cheque" Role="Cheque" Multiplicity="*" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Cheque" Type="Self.Cheque" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
               <PropertyRef Name="WaiterId" />
@@ -344,8 +371,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ChequePosition_Cheque">
-          <End Type="RestoDb_ZadohinModel.Cheque" Role="Cheque" Multiplicity="1" />
-          <End Type="RestoDb_ZadohinModel.ChequePosition" Role="ChequePosition" Multiplicity="*" />
+          <End Role="Cheque" Type="Self.Cheque" Multiplicity="1" />
+          <End Role="ChequePosition" Type="Self.ChequePosition" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cheque">
               <PropertyRef Name="ChequeId" />
@@ -356,8 +383,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ChequePosition_Position">
-          <End Type="RestoDb_ZadohinModel.Position" Role="Position" Multiplicity="1" />
-          <End Type="RestoDb_ZadohinModel.ChequePosition" Role="ChequePosition" Multiplicity="*" />
+          <End Role="Position" Type="Self.Position" Multiplicity="1" />
+          <End Role="ChequePosition" Type="Self.ChequePosition" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Position">
               <PropertyRef Name="PositionId" />
@@ -368,8 +395,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Employee_Role">
-          <End Type="RestoDb_ZadohinModel.Role" Role="Role" Multiplicity="0..1" />
-          <End Type="RestoDb_ZadohinModel.Employee" Role="Employee" Multiplicity="*" />
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Role">
               <PropertyRef Name="id" />
@@ -379,6 +406,58 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Employee_ShiftAccounting">
+          <End Role="ShiftAccounting" Type="Self.ShiftAccounting" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShiftAccounting">
+              <PropertyRef Name="AccoutId" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="AccoutId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RestoDb_ZadohinEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Category" EntityType="Self.Category" />
+          <EntitySet Name="Cheque" EntityType="Self.Cheque" />
+          <EntitySet Name="ChequePosition" EntityType="Self.ChequePosition" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <EntitySet Name="Guest" EntityType="Self.Guest" />
+          <EntitySet Name="Position" EntityType="Self.Position" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="ShiftAccounting" EntityType="Self.ShiftAccounting" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Table" EntityType="Self.Table" />
+          <AssociationSet Name="FK_Position_Category" Association="Self.FK_Position_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Position" EntitySet="Position" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cheque_Table" Association="Self.FK_Cheque_Table">
+            <End Role="Table" EntitySet="Table" />
+            <End Role="Cheque" EntitySet="Cheque" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cheque_Waiter" Association="Self.FK_Cheque_Waiter">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Cheque" EntitySet="Cheque" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChequePosition_Cheque" Association="Self.FK_ChequePosition_Cheque">
+            <End Role="Cheque" EntitySet="Cheque" />
+            <End Role="ChequePosition" EntitySet="ChequePosition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChequePosition_Position" Association="Self.FK_ChequePosition_Position">
+            <End Role="Position" EntitySet="Position" />
+            <End Role="ChequePosition" EntitySet="ChequePosition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Role" Association="Self.FK_Employee_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_ShiftAccounting" Association="Self.FK_Employee_ShiftAccounting">
+            <End Role="ShiftAccounting" EntitySet="ShiftAccounting" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -388,81 +467,103 @@
           <EntitySetMapping Name="Category">
             <EntityTypeMapping TypeName="RestoDb_ZadohinModel.Category">
               <MappingFragment StoreEntitySet="Category">
-                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Cheque">
             <EntityTypeMapping TypeName="RestoDb_ZadohinModel.Cheque">
               <MappingFragment StoreEntitySet="Cheque">
-                <ScalarProperty Name="TableId" ColumnName="TableId" />
-                <ScalarProperty Name="WaiterId" ColumnName="WaiterId" />
-                <ScalarProperty Name="OpeningDate" ColumnName="OpeningDate" />
-                <ScalarProperty Name="IsClosed" ColumnName="IsClosed" />
-                <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="ChequeId" ColumnName="ChequeId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
+                <ScalarProperty Name="IsClosed" ColumnName="IsClosed" />
+                <ScalarProperty Name="OpeningDate" ColumnName="OpeningDate" />
+                <ScalarProperty Name="WaiterId" ColumnName="WaiterId" />
+                <ScalarProperty Name="TableId" ColumnName="TableId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ChequePosition">
             <EntityTypeMapping TypeName="RestoDb_ZadohinModel.ChequePosition">
               <MappingFragment StoreEntitySet="ChequePosition">
-                <ScalarProperty Name="PositionId" ColumnName="PositionId" />
-                <ScalarProperty Name="ChequeId" ColumnName="ChequeId" />
                 <ScalarProperty Name="ChequePositionId" ColumnName="ChequePositionId" />
+                <ScalarProperty Name="ChequeId" ColumnName="ChequeId" />
+                <ScalarProperty Name="PositionId" ColumnName="PositionId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Employee">
             <EntityTypeMapping TypeName="RestoDb_ZadohinModel.Employee">
               <MappingFragment StoreEntitySet="Employee">
-                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="WaiterId" ColumnName="WaiterId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="AccoutId" ColumnName="AccoutId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Guest">
+            <EntityTypeMapping TypeName="RestoDb_ZadohinModel.Guest">
+              <MappingFragment StoreEntitySet="Guest">
+                <ScalarProperty Name="GuestId" ColumnName="GuestId" />
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
+                <ScalarProperty Name="Discont" ColumnName="Discont" />
+                <ScalarProperty Name="TelephoneNumber" ColumnName="TelephoneNumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Position">
             <EntityTypeMapping TypeName="RestoDb_ZadohinModel.Position">
               <MappingFragment StoreEntitySet="Position">
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-                <ScalarProperty Name="Cost" ColumnName="Cost" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="PositionId" ColumnName="PositionId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Role">
             <EntityTypeMapping TypeName="RestoDb_ZadohinModel.Role">
               <MappingFragment StoreEntitySet="Role">
-                <ScalarProperty Name="Post" ColumnName="Post" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Post" ColumnName="Post" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShiftAccounting">
+            <EntityTypeMapping TypeName="RestoDb_ZadohinModel.ShiftAccounting">
+              <MappingFragment StoreEntitySet="ShiftAccounting">
+                <ScalarProperty Name="AccoutId" ColumnName="AccoutId" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="Revenue" ColumnName="Revenue" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="RestoDb_ZadohinModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Table">
             <EntityTypeMapping TypeName="RestoDb_ZadohinModel.Table">
               <MappingFragment StoreEntitySet="Table">
-                <ScalarProperty Name="IsFree" ColumnName="IsFree" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="NumberOfVisitors" ColumnName="NumberOfVisitors" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="TableId" ColumnName="TableId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="NumberOfVisitors" ColumnName="NumberOfVisitors" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsFree" ColumnName="IsFree" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

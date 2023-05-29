@@ -10,6 +10,7 @@
     <Grid ShowGridLines="True">
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid Background="#FFD4D4D4">
@@ -21,11 +22,24 @@
         </Grid>
 
         <StackPanel Orientation="Horizontal">
-            <Image Source="/Resources/Icons/waiter.png" Width="40"/>
             <TextBlock x:Name="WaiterTbl" FontSize="20" VerticalAlignment="Center" Margin="10 0 0 0"/>
         </StackPanel>
-        <Image Source="/Resources/Icons/logo.png" Grid.Column="1" Width="50"/>
+        <Grid Grid.Row="1">
+            <Menu>
+                <MenuItem Header="Файл">
+                    <MenuItem Header="Выйти из профиля"  
+                              Name="ExitProfileMi" Click="ExitProfileMi_Click"/>
+                    <MenuItem Header="Закрыть" 
+                              Name="CloseMi" Click="CloseMi_Click"/>
+                </MenuItem>
+                <MenuItem Header="Скидочные карты" Name="DoscontMi">
+                    <MenuItem Header="Добавить скидочную карту" 
+                              Name="AddDiscontCardMi" Click="AddDiscontCardMi_Click"/>
+                </MenuItem>
+            </Menu>
+        </Grid>
         <Button Name="GoBackBtn" HorizontalAlignment="Right" Content="Назад" Click="GoBackBtn_Click" Height="60" VerticalAlignment="Top"/>
-        <Frame Name="MainFrm" Grid.Row="1" Margin="0 10" NavigationUIVisibility="Hidden"/>
+        <Frame Name="MainFrm" Grid.Row="2" Margin="0 10" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>
+

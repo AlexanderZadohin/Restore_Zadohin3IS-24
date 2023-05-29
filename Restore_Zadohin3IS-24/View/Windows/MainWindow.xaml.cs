@@ -1,5 +1,6 @@
 ﻿using Restore_Zadohin3IS_24.Model;
 using Restore_Zadohin3IS_24.View.Pages;
+using Restore_Zadohin3IS_24.View.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,16 @@ namespace Restore_Zadohin3IS_24
             {
                 WaiterTbl.Text = employee.Name;
                 MainFrm.Navigate(new ChequePage(App.enteredEmployee));
+                ShiftAccounting newAccount = new ShiftAccounting()
+                {
+                    EmployeeId = employee.WaiterId,
+                    StartDate = 
+                }
             }
+        }
+        public MainWindow()
+        {
+            InitializeComponent();
         }
 
         private void GoBackBtn_Click(object sender, RoutedEventArgs e)
@@ -40,6 +50,25 @@ namespace Restore_Zadohin3IS_24
             {
                 MainFrm.GoBack();
             }
+        }
+
+        private void ExitProfileMi_Click(object sender, RoutedEventArgs e)
+        {
+            AuthorizathionWindow authorizathionWindow = new AuthorizathionWindow();
+            Close();
+            authorizathionWindow.ShowDialog();
+            
+        }
+
+        private void CloseMi_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void AddDiscontCardMi_Click(object sender, RoutedEventArgs e)
+        {
+            AddGuestDiscontCard addGuestDiscontCard = new AddGuestDiscontCard();
+            addGuestDiscontCard.ShowDialog();
         }
     }
 }

@@ -20,13 +20,12 @@ namespace Restore_Zadohin3IS_24.View.Windows
     /// </summary>
     public partial class PaymentWindow : Window
     {
-        
         public PaymentWindow()
         {
             InitializeComponent();
 
 
-            ToPayTbl.Text = $"к оплате: {App.selectedCheque.TotalCost} ₽";
+            ToPayTbl.Text = $"{App.selectedCheque.TotalCost}";
         }
 
         private void PayBtn_Click(object sender, RoutedEventArgs e)
@@ -45,7 +44,7 @@ namespace Restore_Zadohin3IS_24.View.Windows
 
         private void BankCard_GotFocus(object sender, RoutedEventArgs e)
         {
-            BankCard.Text = App.selectedCheque.TotalCost.ToString();
+            BankCard.Text = ToPayTbl.Text;
         }
 
         private void BankCard_LostFocus(object sender, RoutedEventArgs e)
@@ -67,6 +66,60 @@ namespace Restore_Zadohin3IS_24.View.Windows
         private void CashTb_TextChanged(object sender, TextChangedEventArgs e)
         {
             ChangeTbl.Text = GetChange();
+        }
+
+
+        private void TelephoneNumCheck_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if(TelephoneNumCheck.Text.Length == 4)
+            {
+                var guest = App.context.Guest.FirstOrDefault(n => n.TelephoneNumber == TelephoneNumCheck.Text);
+                if (guest.Discont == 5)
+                {
+                    Discont5.IsChecked = true;
+                }
+                if (guest.Discont == 10)
+                {
+                    Discont10.IsChecked = true;
+                }
+                if (guest.Discont == 15)
+                {
+                    Discont15.IsChecked = true;
+                }
+            }
+            if(TelephoneNumCheck.Text.Length > 4)
+            {
+                MessageBox.Show("Такой номер недопустим");
+                ToPayTbl.Text = $"{App.selectedCheque.TotalCost}";
+            }
+        }
+
+        private void TelephoneNumCheck_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (TelephoneNumCheck.Text == "")
+            {
+                Discont5.IsChecked = false;
+                Discont10.IsChecked = false;
+                Discont15.IsChecked = false;
+                ToPayTbl.Text = $"{App.selectedCheque.TotalCost}";
+            }
+        }
+
+        private void Discont5_Checked(object sender, RoutedEventArgs e)
+        {
+            ToPayTbl.Text = $"{(double)App.selectedCheque.TotalCost * 0.95}";
+        }
+
+        private void Discont10_Checked(object sender, RoutedEventArgs e)
+        {
+
+            ToPayTbl.Text = $"{(double)App.selectedCheque.TotalCost * 0.9}";
+        }
+
+        private void Discont15_Checked(object sender, RoutedEventArgs e)
+        {
+
+            ToPayTbl.Text = $"{(double)App.selectedCheque.TotalCost * 0.85}";
         }
     }
 }

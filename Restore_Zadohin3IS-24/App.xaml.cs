@@ -28,8 +28,7 @@ namespace Restore_Zadohin3IS_24
         public static Cheque openCheques;
 
         public static Cheque selectedCheque;
-        #region ClassAdmin
-        
-        #endregion
+
+        public static ShiftAccounting revenueEmployee;
     }
 }

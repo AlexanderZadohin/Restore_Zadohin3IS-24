@@ -31,5 +31,23 @@ namespace Restore_Zadohin3IS_24.View.Windows
                 AdminFrm.Navigate(new AdministratorPage(App.enteredEmployee));
             }
         }
+
+        private void ExitProfileMi_Click(object sender, RoutedEventArgs e)
+        {
+            AuthorizathionWindow authorizathionWindow = new AuthorizathionWindow();
+            Close();
+            authorizathionWindow.ShowDialog();
+        }
+
+        private void CloseMi_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void AccountingMi_Click(object sender, RoutedEventArgs e)
+        {
+            AncountWindow ancountWindow = new AncountWindow();
+            ancountWindow.ShowDialog();
+        }
     }
 }

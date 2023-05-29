@@ -50,7 +50,6 @@ namespace Restore_Zadohin3IS_24.View.Windows
                         administrator.Show();
                         Close();
                     }
-
                 }
                 else 
                 {

@@ -96,10 +96,10 @@
                         <GridView.Columns>
                             <GridViewColumn Header="Название"
                                             Width="200"
-                                            DisplayMemberBinding="{Binding Title}"/>
+                                            DisplayMemberBinding="{Binding Position.Title}"/>
                             <GridViewColumn Header="Цена"
                                             Width="180"
-                                            DisplayMemberBinding="{Binding Cost, StringFormat={}{0} ₽}"/>
+                                            DisplayMemberBinding="{Binding Position.Cost, StringFormat={}{0} ₽}"/>
                         </GridView.Columns>
                     </GridView>
                 </ListView.View>
@@ -115,7 +115,7 @@
                         <GridViewColumn Header="Название"
                                         DisplayMemberBinding="{Binding Title}"/>
                         <GridViewColumn Header="Цена"
-                                        DisplayMemberBinding="{Binding Cost, StringFormat={}{} ₽}"/>
+                                        DisplayMemberBinding="{Binding Cost, StringFormat={}{0} ₽}"/>
                     </GridView>
                 </ListView.View>
             </ListView>

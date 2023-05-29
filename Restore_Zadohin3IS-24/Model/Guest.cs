@@ -12,21 +12,11 @@ namespace Restore_Zadohin3IS_24.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Employee
+    public partial class Guest
     {
-        public Employee()
-        {
-            this.Cheque = new HashSet<Cheque>();
-        }
-    
-        public int WaiterId { get; set; }
-        public string Name { get; set; }
-        public string Pincode { get; set; }
-        public Nullable<int> RoleId { get; set; }
-        public Nullable<int> AccoutId { get; set; }
-    
-        public virtual ICollection<Cheque> Cheque { get; set; }
-        public virtual Role Role { get; set; }
-        public virtual ShiftAccounting ShiftAccounting { get; set; }
+        public int GuestId { get; set; }
+        public string FIO { get; set; }
+        public decimal Discont { get; set; }
+        public string TelephoneNumber { get; set; }
     }
 }

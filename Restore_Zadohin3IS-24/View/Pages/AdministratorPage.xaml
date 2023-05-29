@@ -149,23 +149,23 @@
         </ListBox>
         <Grid Grid.Column="2" Grid.Row="1">
             <StackPanel Background="White">
-                <Button Name="AddTableBtn" Style="{StaticResource AddEditDeleteButton}" Content="Добавить"/>
-                <Button Style="{StaticResource AddEditDeleteButton}" Content="Удалить"/>
-                <Button Style="{StaticResource AddEditDeleteButton}" Content="Редактиовать"/>
+                <Button Name="AddTableBtn" Style="{StaticResource AddEditDeleteButton}" Content="Добавить" Click="AddTableBtn_Click"/>
+                <Button Style="{StaticResource AddEditDeleteButton}" Content="Удалить" Name="DeleteTableBtn" Click="DeleteTableBtn_Click"/>
+                <Button Style="{StaticResource AddEditDeleteButton}" Content="Редактировать" Name="EditTableBtn" Click="EditTableBtn_Click"/>
             </StackPanel>
         </Grid>
         <Grid Grid.Column="2" Grid.Row="3">
             <StackPanel Background="White">
-                <Button Style="{StaticResource AddEditDeleteButton}" Content="Добавить"/>
-                <Button Style="{StaticResource AddEditDeleteButton}" Content="Удалить"/>
-                <Button Style="{StaticResource AddEditDeleteButton}" Content="Редактиовать"/>
+                <Button Style="{StaticResource AddEditDeleteButton}" Content="Добавить" Name="AddWaiter" Click="AddWaiter_Click"/>
+                <Button Style="{StaticResource AddEditDeleteButton}" Content="Удалить" Name="DeleteWaiterBtn" Click="DeleteWaiterBtn_Click"/>
+                <Button Style="{StaticResource AddEditDeleteButton}" Content="Редактировать" Name="EditWaiterBtn" Click="EditWaiterBtn_Click"/>
             </StackPanel>
         </Grid>
         <Grid Grid.Column="2" Grid.Row="5">
             <StackPanel Background="White">
-                <Button Style="{StaticResource AddEditDeleteButton}" Content="Добавить"/>
-                <Button Style="{StaticResource AddEditDeleteButton}" Content="Удалить"/>
-                <Button Style="{StaticResource AddEditDeleteButton}" Content="Редактиовать"/>
+                <Button Style="{StaticResource AddEditDeleteButton}" Content="Добавить" Name="AddPositionBtn" Click="AddPositionBtn_Click"/>
+                <Button Name="DeletePositionsBtn" Style="{StaticResource AddEditDeleteButton}" Content="Удалить" Click="DeletePositionsBtn_Click"/>
+                <Button Name="EditPositionsBtn"  Style="{StaticResource AddEditDeleteButton}" Content="Редактировать" Click="EditPositionsBtn_Click"/>
             </StackPanel>
         </Grid>
     </Grid>

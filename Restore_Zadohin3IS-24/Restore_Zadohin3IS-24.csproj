@@ -89,6 +89,9 @@
     <Compile Include="Model\Employee.cs">
       <DependentUpon>RestoModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Guest.cs">
+      <DependentUpon>RestoModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Position.cs">
       <DependentUpon>RestoModel.tt</DependentUpon>
     </Compile>
@@ -110,6 +113,9 @@
     <Compile Include="Model\Role.cs">
       <DependentUpon>RestoModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\ShiftAccounting.cs">
+      <DependentUpon>RestoModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\sysdiagrams.cs">
       <DependentUpon>RestoModel.tt</DependentUpon>
     </Compile>
@@ -128,11 +134,23 @@
     <Compile Include="View\Pages\EditChequePage.xaml.cs">
       <DependentUpon>EditChequePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Windows\AddGuestDiscontCard.xaml.cs">
+      <DependentUpon>AddGuestDiscontCard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\AddPositionWindow.xaml.cs">
       <DependentUpon>AddPositionWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Windows\AddTableWindow.xaml.cs">
+      <DependentUpon>AddTableWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\AddWaiterWindow.xaml.cs">
+      <DependentUpon>AddWaiterWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\AdministratorWindow.xaml.cs">
       <DependentUpon>AdministratorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\AncountWindow.xaml.cs">
+      <DependentUpon>AncountWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\AuthorizathionWindow.xaml.cs">
       <DependentUpon>AuthorizathionWindow.xaml</DependentUpon>
@@ -152,11 +170,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Windows\AddGuestDiscontCard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Windows\AddPositionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Windows\AddTableWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\AddWaiterWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Windows\AdministratorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\AncountWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -232,16 +266,6 @@
     <Folder Include="AppDate\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model\RestoModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>RestoModel.Context.cs</LastGenOutput>
-      <DependentUpon>RestoModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="Model\RestoModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>RestoModel.edmx</DependentUpon>
-      <LastGenOutput>RestoModel.cs</LastGenOutput>
-    </Content>
     <Resource Include="Resources\Icons\Administrator.png" />
     <Resource Include="Resources\Icons\logo.png" />
     <Resource Include="Resources\Icons\waiter.png" />
@@ -260,6 +284,18 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\RestoModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RestoModel.edmx</DependentUpon>
+      <LastGenOutput>RestoModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\RestoModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RestoModel.edmx</DependentUpon>
+      <LastGenOutput>RestoModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
