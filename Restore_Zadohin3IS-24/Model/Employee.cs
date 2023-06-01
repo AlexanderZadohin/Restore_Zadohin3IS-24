@@ -23,7 +23,7 @@ namespace Restore_Zadohin3IS_24.Model
         public string Name { get; set; }
         public string Pincode { get; set; }
         public Nullable<int> RoleId { get; set; }
-        public Nullable<int> AccoutId { get; set; }
+        public Nullable<int> AccoutingID { get; set; }
     
         public virtual ICollection<Cheque> Cheque { get; set; }
         public virtual Role Role { get; set; }

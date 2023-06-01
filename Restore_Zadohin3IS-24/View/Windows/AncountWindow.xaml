@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Restore_Zadohin3IS_24.View.Windows"
         mc:Ignorable="d"
-        Title="Учет смен ресторана" Height="1080" Width="1920" WindowStartupLocation="CenterScreen">
+        Title="Учет смен ресторана" Loaded="Window_Loaded" Height="1080" Width="1920" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
@@ -20,10 +20,7 @@
                 <ColumnDefinition Width="250" />
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
-            <ComboBox Name="CategoryAccoutCmb" SelectionChanged="CategoryAccoutCmb_SelectionChanged" DisplayMemberPath="Title">
-            </ComboBox>
-            <ComboBox>
-
+            <ComboBox Name="CategoryAccoutCmb" SelectionChanged="CategoryAccoutCmb_SelectionChanged" DisplayMemberPath="StartDate">
             </ComboBox>
             <TextBox Name="SearchTb" Grid.Column="2" TextChanged="SearchTb_TextChanged">
                 
@@ -31,14 +28,14 @@
             <Button Name="AllRevenueBtn" Grid.Column="1" Content="Расчитать смену" Style="{StaticResource ButtonStyle}" Click="AllRevenueBtn_Click"/>
         </Grid>
         <Grid Grid.Row="1">
-            <ListView>
+            <ListView Name="ShiftLsv">
                 <ListView.View>
                     <GridView>
                         <GridView.Columns>
-                            <GridViewColumn Header="Официант"/>
-                            <GridViewColumn Header="Начало смены"/>
-                            <GridViewColumn Header="Конец смены"/>
-                            <GridViewColumn Header="Выручка официанта"/>
+                            <GridViewColumn Header="Официант" DisplayMemberBinding="{Binding Name}"/>
+                            <GridViewColumn Header="Начало смены" DisplayMemberBinding="{Binding StartDate, StringFormat={}{0:dd-MM-yyyy HH ч. mm мин. ss сек.}}"/>
+                            <GridViewColumn Header="Конец смены" DisplayMemberBinding="{Binding EndDate, StringFormat={}{0:dd-MM-yyyy HH ч. mm мин. ss сек.}}"/>
+                            <GridViewColumn Header="Выручка официанта" DisplayMemberBinding="{Binding Revenue, StringFormat={}{0} ₽}"/>
                         </GridView.Columns>
                     </GridView>
                 </ListView.View>

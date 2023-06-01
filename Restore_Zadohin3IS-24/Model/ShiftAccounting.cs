@@ -19,8 +19,9 @@ namespace Restore_Zadohin3IS_24.Model
             this.Employee = new HashSet<Employee>();
         }
     
-        public int AccoutId { get; set; }
+        public int IDAccount { get; set; }
         public int EmployeeId { get; set; }
+        public string Name { get; set; }
         public decimal Revenue { get; set; }
         public System.DateTime StartDate { get; set; }
         public Nullable<System.DateTime> EndDate { get; set; }

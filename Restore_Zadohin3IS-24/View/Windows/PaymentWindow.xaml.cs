@@ -36,8 +36,8 @@ namespace Restore_Zadohin3IS_24.View.Windows
             App.context.SaveChanges();
 
             DialogResult = true;
-
             MessageBox.Show("Заказ умпешно оплачен!");
+
 
             Close();
         }
@@ -71,7 +71,7 @@ namespace Restore_Zadohin3IS_24.View.Windows
 
         private void TelephoneNumCheck_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if(TelephoneNumCheck.Text.Length == 4)
+            if (TelephoneNumCheck.Text.Length == 4)
             {
                 var guest = App.context.Guest.FirstOrDefault(n => n.TelephoneNumber == TelephoneNumCheck.Text);
                 if (guest.Discont == 5)
@@ -87,7 +87,7 @@ namespace Restore_Zadohin3IS_24.View.Windows
                     Discont15.IsChecked = true;
                 }
             }
-            if(TelephoneNumCheck.Text.Length > 4)
+            if (TelephoneNumCheck.Text.Length > 4)
             {
                 MessageBox.Show("Такой номер недопустим");
                 ToPayTbl.Text = $"{App.selectedCheque.TotalCost}";

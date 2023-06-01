@@ -40,7 +40,7 @@
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Pincode" Type="varchar" MaxLength="4" Nullable="false" />
           <Property Name="RoleId" Type="int" />
-          <Property Name="AccoutId" Type="int" />
+          <Property Name="AccoutingID" Type="int" />
         </EntityType>
         <EntityType Name="Guest">
           <Key>
@@ -70,10 +70,11 @@
         </EntityType>
         <EntityType Name="ShiftAccounting">
           <Key>
-            <PropertyRef Name="AccoutId" />
+            <PropertyRef Name="IDAccount" />
           </Key>
-          <Property Name="AccoutId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDAccount" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EmployeeId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Revenue" Type="decimal" Precision="8" Scale="2" Nullable="false" />
           <Property Name="StartDate" Type="datetime" Nullable="false" />
           <Property Name="EndDate" Type="datetime" />
@@ -163,10 +164,10 @@
           <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ShiftAccounting">
-              <PropertyRef Name="AccoutId" />
+              <PropertyRef Name="IDAccount" />
             </Principal>
             <Dependent Role="Employee">
-              <PropertyRef Name="AccoutId" />
+              <PropertyRef Name="AccoutingID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -268,7 +269,7 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Pincode" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="RoleId" Type="Int32" />
-          <Property Name="AccoutId" Type="Int32" />
+          <Property Name="AccoutingID" Type="Int32" />
           <NavigationProperty Name="Cheque" Relationship="Self.FK_Cheque_Waiter" FromRole="Employee" ToRole="Cheque" />
           <NavigationProperty Name="Role" Relationship="Self.FK_Employee_Role" FromRole="Employee" ToRole="Role" />
           <NavigationProperty Name="ShiftAccounting" Relationship="Self.FK_Employee_ShiftAccounting" FromRole="Employee" ToRole="ShiftAccounting" />
@@ -304,10 +305,11 @@
         </EntityType>
         <EntityType Name="ShiftAccounting">
           <Key>
-            <PropertyRef Name="AccoutId" />
+            <PropertyRef Name="IDAccount" />
           </Key>
-          <Property Name="AccoutId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDAccount" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Revenue" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
           <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="EndDate" Type="DateTime" Precision="3" />
@@ -411,10 +413,10 @@
           <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ShiftAccounting">
-              <PropertyRef Name="AccoutId" />
+              <PropertyRef Name="IDAccount" />
             </Principal>
             <Dependent Role="Employee">
-              <PropertyRef Name="AccoutId" />
+              <PropertyRef Name="AccoutingID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -501,7 +503,7 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Pincode" ColumnName="Pincode" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-                <ScalarProperty Name="AccoutId" ColumnName="AccoutId" />
+                <ScalarProperty Name="AccoutingID" ColumnName="AccoutingID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -537,8 +539,9 @@
           <EntitySetMapping Name="ShiftAccounting">
             <EntityTypeMapping TypeName="RestoDb_ZadohinModel.ShiftAccounting">
               <MappingFragment StoreEntitySet="ShiftAccounting">
-                <ScalarProperty Name="AccoutId" ColumnName="AccoutId" />
+                <ScalarProperty Name="IDAccount" ColumnName="IDAccount" />
                 <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Revenue" ColumnName="Revenue" />
                 <ScalarProperty Name="StartDate" ColumnName="StartDate" />
                 <ScalarProperty Name="EndDate" ColumnName="EndDate" />

@@ -32,15 +32,14 @@ namespace Restore_Zadohin3IS_24
             {
                 WaiterTbl.Text = employee.Name;
                 MainFrm.Navigate(new ChequePage(App.enteredEmployee));
-                ShiftAccounting newAccount = new ShiftAccounting()
-                {
-                    EmployeeId = employee.WaiterId,
-                    StartDate = 
-                }
+                
+                employee.ShiftAccounting.StartDate = DateTime.Now;
+                App.context.SaveChanges();
             }
         }
         public MainWindow()
         {
+
             InitializeComponent();
         }
 
@@ -55,9 +54,10 @@ namespace Restore_Zadohin3IS_24
         private void ExitProfileMi_Click(object sender, RoutedEventArgs e)
         {
             AuthorizathionWindow authorizathionWindow = new AuthorizathionWindow();
+            enteredEmployee.ShiftAccounting.EndDate = DateTime.Today.AddHours(22).AddMinutes(00);
+            App.context.SaveChanges();
             Close();
             authorizathionWindow.ShowDialog();
-            
         }
 
         private void CloseMi_Click(object sender, RoutedEventArgs e)
@@ -70,5 +70,10 @@ namespace Restore_Zadohin3IS_24
             AddGuestDiscontCard addGuestDiscontCard = new AddGuestDiscontCard();
             addGuestDiscontCard.ShowDialog();
         }
+
+        //private bool IsFirstLogin(Employee employee)
+        //{
+        //    DateTime today = DateTime.Today;
+        //}
     }
 }

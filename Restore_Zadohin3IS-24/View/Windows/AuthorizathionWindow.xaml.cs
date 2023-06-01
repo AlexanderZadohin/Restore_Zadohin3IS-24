@@ -40,6 +40,7 @@ namespace Restore_Zadohin3IS_24.View.Windows
                 {
                     if (employee.RoleId == 1) 
                     {
+                        App.context.SaveChanges();
                         MainWindow mainWindow = new MainWindow(employee);
                         mainWindow.Show();
                         Close();

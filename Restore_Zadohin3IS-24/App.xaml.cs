@@ -30,5 +30,7 @@ namespace Restore_Zadohin3IS_24
         public static Cheque selectedCheque;
 
         public static ShiftAccounting revenueEmployee;
+
+        public static ShiftAccounting enterEmployee;
     }
 }
